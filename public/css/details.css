@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Yomogi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container .cont .description p {
+  font-family: 'Yomogi';
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container .cont .ingredients p {
+  font-size: 20px;
+  font-family: 'Yomogi';
+  font-weight: bold;
+}
+
+.img-container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  background-color: #f55e27;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.img-container img {
+  width: 100%;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.item .img {
+  width: 250px;
+  height: 300;
+  border-radius: 2%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.item .favoris {
+  position: absolute;
+  width: 30px;
+  top: 10;
+  left: 10;
+}
+
+.item:hover p {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.item p {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.item .title {
+  position: absolute;
+  color: white;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+/*# sourceMappingURL=details.css.map */

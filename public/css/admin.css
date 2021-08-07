@@ -1,0 +1,22 @@
+.menu {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.menu a {
+  background-color: #000;
+  color: white;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background-color: #ccc;
+}
+
+.menu a.active {
+  background-color: #f55e27;
+  color: white;
+}
+/*# sourceMappingURL=admin.css.map */

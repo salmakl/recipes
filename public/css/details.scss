@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Yomogi&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    .cont{
+        .description p{
+            font-family: 'Yomogi';
+            font-size: 20px;
+            font-weight: bold;
+        }
+         .ingredients p{
+            font-size: 20px;
+            font-family: 'Yomogi';
+            font-weight: bold;
+        }
+    }
+}
+
+.img-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f55e27;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    img {
+        width: 100%;
+    }
+}
+.container {
+    display: flex;
+    gap:20px;
+    
+
+  }
+  
+  .item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    
+    .img {
+        width: 250px;
+        height: 300;
+        border-radius: 2%;
+        object-fit: cover;
+      }
+      .favoris {
+        position: absolute;
+        width: 30px;
+        top: 10;
+        left: 10;
+      }
+    &:hover p {
+      transform: translateY(0);
+  
+    }
+    p{
+      transform: translateY(50px);
+      transition: 300ms;
+    }
+  
+    .title {
+      position: absolute;
+      color: white;
+      bottom: 20px;
+      left: 20px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
