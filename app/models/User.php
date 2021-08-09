@@ -6,7 +6,12 @@
             $this->db = new Database;
         }
 
-
+        public function getUsers() 
+        {
+           $this->db->query("SELECT * FROM users");
+           $users = $this->db->resultSet();
+           return $users;
+        }
 
         public function find($email,$password) {
             $this->db->query("SELECT * FROM users WHERE email = :email AND password = :password");

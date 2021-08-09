@@ -73,6 +73,33 @@ header .active {
           text-decoration-color: #f78157;
 }
 
+.drop-trigger {
+  cursor: pointer;
+}
+
+.drop-trigger .drop-down {
+  display: none;
+}
+
+.drop-trigger .drop-down ul {
+  padding: 10px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+  position: absolute;
+  right: 20px;
+}
+
+.drop-trigger .drop-down ul li:hover {
+  background: #f6f6f6;
+}
+
+.drop-trigger:hover .drop-down {
+  display: block;
+}
+
 body {
   background-color: #fff5f4;
 }
@@ -101,7 +128,7 @@ body {
 footer {
   margin: 0 auto;
   padding: 40px 70px;
-  background-color: #2F2F2F;
+  background-color: #2f2f2f;
   color: #dadada;
   text-align: center;
 }
@@ -303,37 +330,6 @@ body .container .contents .title {
           box-shadow: 12px;
 }
 
-body .container .contents .input {
-  width: 60%;
-  height: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #ffede8;
-  border-radius: 25px;
-  padding: 0px 40px;
-  border-radius: 50px;
-  margin: 15px auto;
-  gap: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .container .contents .input i {
-  opacity: 30%;
-}
-
-body .container .contents .input .mainInput {
-  border: none;
-  outline: none;
-  opacity: 40%;
-  background-color: #ffede8;
-  height: 60px;
-  font-size: 18px;
-  padding: 0;
-}
-
 body .container .btns {
   display: inline;
 }
@@ -405,7 +401,7 @@ body .container .btns .Btn2 {
 }
 
 .form #img_label i {
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
   margin: 15px auto;
   gap: 10px;
@@ -481,7 +477,7 @@ body .container .btns .Btn2 {
 }
 
 .slideshow .slick-dots li button:before {
-  content: '';
+  content: "";
   background: #fff;
   color: #fff;
   height: 2px;
@@ -493,8 +489,8 @@ body .container .btns .Btn2 {
   left: auto;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   opacity: 0.6;
 }
 
@@ -526,7 +522,7 @@ body .container .btns .Btn2 {
   width: 100vw;
   text-align: center;
   color: #fff;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: 100;
   pointer-events: none;
   text-transform: uppercase;
@@ -679,5 +675,38 @@ main .slider .slides input {
 
 #radio3:checked ~ .navigation-auto .auto-btn3 {
   background: #bd5025;
+}
+
+.input {
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ffede8;
+  border-radius: 25px;
+  padding: 0px 40px;
+  border-radius: 50px;
+  margin: 15px auto;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.input i {
+  opacity: 30%;
+}
+
+.input .mainInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 60px;
+  font-size: 18px;
+  padding: 0;
+}
+
+.input #text {
+  height: unset;
 }
 /*# sourceMappingURL=style.css.map */

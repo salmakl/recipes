@@ -8,7 +8,13 @@
 
 
         public function getAll() {
-            $this->db->query("SELECT * FROM recipes");
+            $this->db->query("SELECT * FROM recipes WHERE status =1");
+            $recipes = $this->db->resultSet();
+            return $recipes;
+        }
+
+        public function getRecipes() {
+            $this->db->query("SELECT r.id,r.name,r.description,status,r.img,t.name as type FROM recipes r,type t WHERE t.id=r.type ");
             $recipes = $this->db->resultSet();
             return $recipes;
         }
@@ -104,6 +110,7 @@
             }
         }
 
+
         public function delete($id){
             $this->db->query("DELETE FROM recipes WHERE id=:id");
 
@@ -116,5 +123,29 @@
             } catch(PDOException $e) {
                 return $e->getMessage();
             }
+        }
+        public function approuved($id)
+        {
+            $this->db->query("UPDATE `recipes` SET STATUS=1 WHERE id=:id");
+            $this->db->bind(':id', $id);
+                 //Execute function
+                 try {
+                    $this->db->execute();
+                } catch(PDOException $e) {
+                    return $e->getMessage();
+                }
+
+        }
+        public function Napprouved($id)
+        {
+            $this->db->query("UPDATE `recipes` SET STATUS=0 WHERE id=:id");
+            $this->db->bind(':id', $id);
+                 //Execute function
+                 try {
+                    $this->db->execute();
+                } catch(PDOException $e) {
+                    return $e->getMessage();
+                }
+
         }
     }

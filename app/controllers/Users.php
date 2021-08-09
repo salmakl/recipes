@@ -16,6 +16,18 @@
 
             $this->view('signup');
         }
+        public function Dash() {
+
+            $this->view('overview');
+        }
+
+        public function getUsers()
+        {
+           $users= $this->userModel->getUsers();
+        //    die(var_dump($users));
+           $this->view('users',$users);   
+        }
+
 
         public function store(){
             if(isset($_POST['email']) && isset($_POST['pwd']) && isset($_POST['fname']) && isset($_POST['lname'])){
@@ -48,9 +60,16 @@
 
                         $_SESSION['id'] = $user['id'];
                         $_SESSION['role'] = $user['role'];
-            $this->view('home',$user);
+                        // $this->view('home',$user);
+                        header('Location:'.URLROOT);
 
                         // $this->home();
+                    }elseif($user['role'] == 'admin'){
+                        $_SESSION['id'] = $user['id'];
+                        $_SESSION['role'] = $user['role'];
+                        // $this->view('overview');
+                        header('Location:'.URLROOT.'/recipes/getRecipes');
+                        // $this->Dash();
                     }
 
                 }else {

@@ -20,8 +20,16 @@
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="#">Categories</a></li>  
         </ul>
-        <a href="login.html"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
-        
+        <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+            <div class="drop-down">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My Recipes</a></li>
+                    <li><a href="#">logout</a></li>
+                </ul>
+            </div>
+            </div>        
   
     </header>
     

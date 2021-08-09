@@ -20,14 +20,23 @@
                 <ul>
                     <li ><a href="<?php echo URLROOT ?>">Home</a></li>
                     <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
-                    <li class="active"><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
+                    <li class="active"><a href="<?php echo URLROOT ?>/types">Categories</a></li>  
                 </ul>
     
                 <?php if(empty($_SESSION['id'])): ?>
                 <a href="<?php echo URLROOT ?>/users"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
                 <?php else: ?>
-                <a href="login.html"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt=""></a>
-                <?php endif;?>    
+                    <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+            <div class="drop-down">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My Recipes</a></li>
+                    <li><a href="#">logout</a></li>
+                </ul>
+            </div>
+            </div>                
+            <?php endif;?>    
           
             </header>
             
@@ -49,7 +58,7 @@
                <div class="row">
                         <div class="col">
                             <div class="item">
-                                <a href="<?php echo URLROOT ?>/categories/getByType/<?php echo $row['id'] ?>"><img class="img" src="<?PHP echo IMAGE.$row['img'] ?>" alt=""></a>
+                                <a href="<?php echo URLROOT ?>/types/getByType/<?php echo $row['id'] ?>"><img class="img" src="<?PHP echo IMAGE.$row['img'] ?>" alt=""></a>
                                 
                                 <p class="title"><?= $row['name'] ?></p>
                                

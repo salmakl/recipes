@@ -6,19 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo CSS_PATH ?>/dashbord.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,200;1,500&family=Raleway:wght@400;600&display=swap"
         rel="stylesheet">
-    <title>Dashboard</title>
+    <title>C U I S I N E</title>
 </head>
 
+<body >
 <div class="admin">
 
 <div class="sidebar">
@@ -79,9 +77,10 @@
               </div>
 
     </div>
-
-
-
+    
+    
+    
+    
 
 
 
@@ -89,53 +88,45 @@
         <div class="content">
 
             <div class="title">
-                <div class="logo">
-                   
-                </div>
+             
                
             </div>
         
 
          
-            <h2>Users list</h2>
-        
+            <h2>Cuisine Types</h2>
+            <div class="add">
+            <i class="far fa-plus-square"></i>
+            </div>
             <div class="table-container">
-                
                 <table>
+
                     <tr>
 
                         <th><h6>Name</h6></th>
-                        <th><h6>Email</h6></th>
-                        <th><h6>Image</h6></th>
+                        <th><h6>image</h6></th>
+                        <th><h6>Actions</h6></th>
+
                       
                     </tr>
                     
+                    <?php foreach ($data as $row){ 
+                    ?>
 
-                        <?php 
-                        foreach ($data as $row){
-                        ?>
 
                         <tr>
-                            <td class="name"><?= $row['fname']." ".$row['lname'] ?></td>
-                            <td class="description"><?= $row['email'] ?></td>
-                            <td class="image" ><img src="<?php echo IMAGE ?>3.jpg" alt=""></td>
+                            <td class="name"><?= $row['name'] ?></td>
+                            <td class="image" ><img src="<?php echo IMAGE.$row['img']?>" alt=""></td>
+                            <td class="" ><a href=""><i class="far fa-edit"></i></a></td>
+
                         </tr>
+
                         <?php }?>
-                     
-                 
+            
                     
                 </table>
             </div>
             </div>
-
-            
-
-
-        
-               
-
-
-
 
 </body>
 

@@ -12,6 +12,18 @@ session_start();
         $this->getWishlist();
         $this->view('recipes',$recipes); 
         }
+        public function getRecipes(){
+
+        $data = $this->recipesModel->getRecipes();   
+        // die(var_dump($data));
+        $this->view('overview',$data); 
+        }
+        public function getDetails(){
+
+        $data = $this->recipesModel->getRecipes();   
+        // die(var_dump($data));
+        $this->view('adminrecipes',$data); 
+        }
     
          public function Wishlist(){
             $id_user=$_SESSION['id'];
@@ -82,6 +94,22 @@ session_start();
         header("location:" . $_SERVER['HTTP_REFERER']);
        
     }
+        public function approuved($id){
+        
+            $this->recipesModel->approuved($id);
+            header("location:" . $_SERVER['HTTP_REFERER']);
+
+
+        }
+        public function Napprouved($id){
+        
+            $this->recipesModel->Napprouved($id);
+            header("location:" . $_SERVER['HTTP_REFERER']);
+        }
+
+
+
+
         public function edit(){
 
         }

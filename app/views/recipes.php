@@ -26,8 +26,16 @@
         <?php if(empty($_SESSION['id'])): ?>
         <a href="<?php echo URLROOT ?>/users"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
         <?php else: ?>
-        <a href="login.html"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt=""></a>
-        <?php endif;?>
+            <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+            <div class="drop-down">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My Recipes</a></li>
+                    <li><a href="#">logout</a></li>
+                </ul>
+            </div>
+            </div>        <?php endif;?>
       
         </header>
         

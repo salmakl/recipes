@@ -25,8 +25,17 @@
         <?php if(empty($_SESSION['id'])): ?>
         <a href="<?php echo URLROOT ?>/users"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
         <?php else: ?>
-        <a href="login.html"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt=""></a>
-<?php endif;?>
+        <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+            <div class="drop-down">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My Recipes</a></li>
+                    <li><a href="#">logout</a></li>
+                </ul>
+            </div>
+            </div>
+        <?php endif;?>
   
     </header>
     
@@ -42,7 +51,7 @@
                 <input type="radio" name="radio-btn" id="radio3">
 
                 <div class="slide first">
-                    <img src="images/1.jpg" alt=""> 
+                    <img src="<?php echo IMAGE ?>1.jpg" alt=""> 
                 </div>
 
                 <div class="slide ">
@@ -50,7 +59,7 @@
                 </div>
 
                 <div class="slide ">
-                    <img src="images/home.jpg" alt=""> 
+                    <img src="<?php echo IMAGE ?>home.jpg" alt=""> 
                 </div>
 <!-- auto navigation -->
                 <div class="navigation-auto">
@@ -87,26 +96,26 @@
         <h1>Popular Categories</h1>
         <div class="adv-cont">
             <div class="adv">
-                <img src="images/icons/cake-slice.svg" alt="Icon">
+                <img src="<?php echo IMAGE ?>icons/cake-slice.svg" alt="Icon">
                 <h3>Lorem, ipsum.</h3>
                 
             </div>
             <div class="adv">
-                <img src="images/icons/chicken-leg.svg" alt="Icon">
+                <img src="<?php echo IMAGE ?>icons/chicken-leg.svg" alt="Icon">
                 <h3>Lorem, ipsum.</h3>
                 
             </div>
             <div class="adv">
-                <img src="images/icons/drink.svg" alt="Icon">
+                <img src="<?php echo IMAGE ?>icons/drink.svg" alt="Icon">
                 <h3>Lorem, ipsum.</h3>
                 
             </div>
             <div class="adv">
-                <img src="images/icons/spaguetti.svg" alt="Icon">
+                <img src="<?php echo IMAGE ?>icons/spaguetti.svg" alt="Icon">
                 <h3>Lorem, ipsum.</h3> 
             </div>
             <div class="adv">
-                <img src="images/icons/salad.svg" alt="Icon">
+                <img src="<?php echo IMAGE ?>icons/salad.svg" alt="Icon">
                 <h3>Lorem, ipsum.</h3> 
             </div>
         </div>
