@@ -1,4 +1,3 @@
-
 <html lang="en">
     
     <head>
@@ -16,7 +15,7 @@
     <body>
             <!--begin header-->
             <header>
-                <a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
+                <div id="logo">Quick<span id="logo-s">Cook</span></div>
                 <ul>
                     <li ><a href="home.html">Home</a></li>
                     <li ><a href="recipes.html">Recipes</a></li>
@@ -61,45 +60,11 @@
                               
                             </div>
                         </div>
+                        </div>
                
                         <?php }?>
                    
                         
-                   
-                        
-                    
-                        
-                       
-                        
-                    
-                        
-      
-                        
-                      
-                        
-               
-                        
-                 
-                     
-                        
-                <!-- </div>
-                <div class="grid-container">
-                   <div class="grid-item" >
-                    <img  src="images/3.jpg" alt="">
-                   </div>
-                   <div class="grid-item">
-                    <img  src="images/3.jpg" alt="">
-                   </div>
-                   <div class="grid-item">
-                    <img  src="images/3.jpg" alt="">
-                   </div>
-                   <div class="grid-item">
-                    <img  src="images/3.jpg" alt="">
-                   </div>
-                   <div class="grid-item">
-                    <img  src="images/3.jpg" alt="">
-                   </div>
-                </div> -->
     
             </section>
     

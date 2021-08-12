@@ -15,7 +15,7 @@
 
 <body class="body">
 
-<form action="<?php echo URLROOT ?>/recipes/store" method="POST" class="form">
+<form action="<?php echo URLROOT ?>/recipes/store" method="POST" class="form" enctype="multipart/form-data">
     <div class="container">
         
         <div class="content">
@@ -23,18 +23,34 @@
 
             <div class="input">
                 
-                <input type="text" placeholder="Name of recipe" name="title" class="mainInput">
+                <input type="text" placeholder="Name of recipe" name="name" class="mainInput">
             </div>
             <div class="input">
-                <select name="" id="" class="mainInput"> 
-                    <option value="">1</option>
-                    <option value="">2</option>
+
+<textarea name="description" id="text" cols="30" rows="3" class="mainInput" placeholder="Description"></textarea>
+</div>
+            <div class="input">
+                <select name="type" id="" class="mainInput"> 
+                <?php
+                    foreach($data[0] as $row){ ?>
+                    <option value="<?=$row['id']?>"><?=$row['name']?></option>
+                 <?php } ?>
                 </select>
                 
             </div>
             <div class="input">
+                <select name="category" id="" class="mainInput"> 
+                <?php
+                    foreach($data[1] as $row){ ?>
+                    <option value="<?=$row['id']?>"><?=$row['title']?></option>
+                 <?php } ?>
+                </select>
+                
+            </div>
 
-                <textarea name="" id="text" cols="30" rows="8" class="mainInput"></textarea>
+            <div class="input">
+
+                <textarea name="ingrediants" id="text" cols="30" rows="8" class="mainInput" placeholder="Ingrediants"></textarea>
             </div>
 
        
@@ -48,11 +64,14 @@
            
             <input  type="submit" name="add" value="Add" class="Btn">
             </div>
+            </div>
+        
 
-        </div>
+          
         <img src="<?php echo IMAGE ?>Fichier 3.svg" class="grande-image">
-    </div>
+        </div>
+        </form>
   
 </body>
-</form>
+
 </html>

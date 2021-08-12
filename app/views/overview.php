@@ -103,11 +103,11 @@
                 <div class="card">
                     <div>
                         <h4>Total Products</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p></p>
                     </div>
 
                     <div>
-                        <h3>1.5K</h3>
+                        <h3>11 </h3>
                         
                         
                     </div>
@@ -115,10 +115,10 @@
                 <div class="card">
                     <div>
                         <h4>Total Visitors</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet.</p> -->
                     </div>
                     <div>
-                        <h3>1.5K</h3>
+                        <h3>8</h3>
                     </div>
                 </div>
 

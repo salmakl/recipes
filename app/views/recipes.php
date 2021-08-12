@@ -11,16 +11,17 @@
     <script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo CSS_PATH ?>/style.css">
     <link rel="stylesheet" href="<?php echo CSS_PATH ?>/recipes.css">
-    <title>Recipes</title>
+    <title>R E C I P E S</title>
 </head>
 <body>
         <!--begin header-->
         <header>
-            <a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
+        <div id="logo">Quick<span id="logo-s">Cook</span></div>
             <ul>
-                <li ><a href="<?php echo URLROOT ?>">Home</a></li>
-                <li class="active"><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
-                <li><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
+                     <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+                    <li class="active"><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+                    <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+                    <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
             </ul>
 
         <?php if(empty($_SESSION['id'])): ?>
@@ -61,52 +62,17 @@
                             <a href="<?php echo URLROOT ?>/recipes/getById/<?php echo $row['id'] ?>"><img class="img" src="<?PHP echo IMAGE.$row['img'] ?>" alt=""></a>
                             
                             <p class="title"><?= $row['name'] ?></p>
-                            <?php if(in_array($row['id'],$_SESSION['wishlist'])): ?>
+                            <?php if(isset($row['id'])&& isset($_SESSION['wishlist']) && in_array($row['id'],$_SESSION['wishlist'])): ?>
                             <a href="<?php echo URLROOT ?>/recipes/Add2Favoris/<?php echo $row['id'] ?>/<?php echo $row['user'] ?>"><img class=" favoris" src="<?php echo IMAGE ?>icons/hearedt.svg" alt=""></a>
                             <?php else: ?>
                                 <a href="<?php echo URLROOT ?>/recipes/Add2Favoris/<?php echo $row['id'] ?>/<?php echo $row['user'] ?>"><img class=" favoris" src="<?php echo IMAGE ?>icons/heart.svg" alt=""></a>
                                 <?php endif; ?>
                         </div>
                     </div>
+                    </div>
            
                     <?php }?>
-               
-                    
-               
-                    
-                
-                    
-                   
-                    
-                
-                    
-  
-                    
-                  
-                    
-           
-                    
-             
-                 
-                    
-            <!-- </div>
-            <div class="grid-container">
-               <div class="grid-item" >
-                <img  src="images/3.jpg" alt="">
-               </div>
-               <div class="grid-item">
-                <img  src="images/3.jpg" alt="">
-               </div>
-               <div class="grid-item">
-                <img  src="images/3.jpg" alt="">
-               </div>
-               <div class="grid-item">
-                <img  src="images/3.jpg" alt="">
-               </div>
-               <div class="grid-item">
-                <img  src="images/3.jpg" alt="">
-               </div>
-            </div> -->
+ 
 
         </section>
 

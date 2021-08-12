@@ -106,7 +106,7 @@
 
                         <th><h6>Name</h6></th>
                         <th><h6>Email</h6></th>
-                        <th><h6>Image</h6></th>
+                        <th><h6>Action</h6></th>
                       
                     </tr>
                     
@@ -118,7 +118,9 @@
                         <tr>
                             <td class="name"><?= $row['fname']." ".$row['lname'] ?></td>
                             <td class="description"><?= $row['email'] ?></td>
-                            <td class="image" ><img src="<?php echo IMAGE ?>3.jpg" alt=""></td>
+                            <td class="status">
+                            <a href="<?php echo URLROOT ?>/recipes/delete/<?php echo $row['id']?>" ><img src="<?php echo IMAGE?>delete.svg" ></a>
+                        </td>
                         </tr>
                         <?php }?>
                      

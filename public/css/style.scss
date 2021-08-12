@@ -7,11 +7,34 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+#logo{
+  line-height: 60px;
+font-family: "Yomogi", cursive;
+  display: inline-block;
+cursor: pointer;
+font-size: 20px;
+font-weight: bold;
+color: #b43b16; /* blue */
+}
+#logo:hover{
+  color: #ff5e00; /* white */
+}
+#logo-s{  
+color: #ff5e00; /* white */
+// margin-left: 5px;
+font-family: "Yomogi", cursive;
+}
+#logo:hover #logo-s{
+color: #b43b16; /* blue */
+}
 .menu {
   display: none;
   float: right;
   margin: 20px 30px 0px 0px;
   cursor: pointer;
+}
+.hum{
+  display: none;
 }
 
 header {
@@ -42,6 +65,7 @@ header {
     padding: 0;
     overflow: hidden;
     display: flex;
+  
 
     border-radius: 10px;
   }
@@ -74,6 +98,7 @@ header {
       background: white;
       position: absolute;
       right: 20px;
+      z-index: 1;
 
       li:hover {
         background: #f6f6f6;
@@ -228,9 +253,7 @@ body .container {
       justify-content: space-evenly;
       padding: 0 30px 0 20px;
     }
-    #details {
-      width: 300px;
-    }
+ 
     #star {
       width: 20px;
       margin-top: 15px;
@@ -336,6 +359,7 @@ body .container {
         left: 50%;
         transform: translate(-50%, -50%);
       }
+    
     }
   }
 
@@ -421,6 +445,23 @@ body .container {
   letter-spacing: 20px;
   line-height: 0.8;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   @media (max-width: 767px) {
     font-size: 40px;
   }
@@ -573,4 +614,114 @@ main {
   #text{
     height:unset;
   }
+}
+
+.img1{
+  width: 100px;
+  
+  margin: 30px;
+}
+.title1{
+  color: black
+
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  justify-content:center;
+
+ 
+  div{
+    margin: 10px ;
+  }
+  .btn{
+    padding: 14px;
+    background: #f55e27c4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  .body{
+    overflow-x: hidden ;
+  }
+ 
+
+  .adv-cont{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  section.adv > div:last-child {
+    padding: 20px;
+  }
+
+  .container-card {
+    width: 360px;
+    margin-top: 60px;
+    margin-bottom: 10vh;
+  }
+
+
+
+
+ 
+    .menu{
+      display: block;
+    }
+    .hum{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: block;
+      position: absolute;
+
+      // overflow: hidden;
+      top: -30;
+      right: 0;
+      z-index: 1;
+      ul{
+        background-color:white;
+        li:hover {
+          background: #f6f6f6;
+        }
+      }
+    }
+    .nav,.drop-trigger{
+      display: none;
+    }
+
+    header ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      top: 127px;
+      right: 75px;
+    }
+
+    header li a {
+      display: block;
+      text-align: center;
+      padding: 10px 40px;
+      text-decoration: none;
+      color: #f55e27;
+    }
+
+    
+    header .active {
+      text-decoration: underline;
+      -webkit-text-decoration-color: white;
+              text-decoration-color: white;
+    }
+  
+
 }

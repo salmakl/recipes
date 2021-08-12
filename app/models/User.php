@@ -12,6 +12,46 @@
            $users = $this->db->resultSet();
            return $users;
         }
+        public function getUser($id) 
+        {
+           $this->db->query("SELECT * FROM users WHERE id = $id");
+           $users = $this->db->resultSet();
+           return $users;
+        }
+        public function getPassword($id) 
+        {
+           $this->db->query("SELECT `password` FROM users WHERE id = $id");
+           $users = $this->db->single();
+           return $users['password'];
+        }
+        public function editPassword($id,$password) 
+        {
+           $this->db->query("UPDATE `users` SET `password`=:password WHERE id=:id");
+
+           $this->db->bind(':id', $id);
+           $this->db->bind(':password', $password);
+           try {
+            $this->db->execute();
+        } catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+        public function editProfil($id,$fname,$lname,$email) 
+        {
+           $this->db->query("UPDATE `users` SET `fname`=:fname,`lname`=:lname,`email`=:email WHERE id=:id");
+
+           $this->db->bind(':id', $id);
+           $this->db->bind(':fname', $fname);
+           $this->db->bind(':lname', $lname);
+           $this->db->bind(':email', $email);
+           try {
+            $this->db->execute();
+        } catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+           
+        
 
         public function find($email,$password) {
             $this->db->query("SELECT * FROM users WHERE email = :email AND password = :password");

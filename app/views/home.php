@@ -8,6 +8,7 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="<?php echo CSS_PATH ?>/style.css">
+    <link rel="stylesheet" href="<?php echo CSS_PATH ?>/slider.css">
     <title>H O M E</title>
 </head>
 
@@ -16,78 +17,99 @@
 
     <!--begin header-->
     <header>
-        <a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
-        <ul>
-            <li class="active"><a href="<?php echo URLROOT ?>">Home</a></li>
-            <li><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
-            <li><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
+     <div id="logo">Quick<span id="logo-s">Cook</span></div>
+        
+        <ul class="nav">
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+            <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+            <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
         </ul>
-        <?php if(empty($_SESSION['id'])): ?>
-        <a href="<?php echo URLROOT ?>/users"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
-        <?php else: ?>
+        
         <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
                 <ul>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My Recipes</a></li>
                     <li><a href="#">logout</a></li>
                 </ul>
             </div>
-            </div>
-        <?php endif;?>
+            </div>  
+        <svg class="menu" viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="nav()">
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+        </svg>      
+            
+        <nav class="hum" >
+        <ul>
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+            <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+            <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">logout</a></li>  
+        </ul>
+        </nav>
   
     </header>
-    
     <!--End header-->
     <!--begin main-->
     <main>
     
         <!-- begin slider -->
-        <dic class="slider">
-            <div class="slides">
-                <input type="radio" name="radio-btn" id="radio1">
-                <input type="radio" name="radio-btn" id="radio2">
-                <input type="radio" name="radio-btn" id="radio3">
+        
+        <div class="slide">
+		<!-- fade css -->
+        
+		<div class="myslide fade">
+        <div class="txt">
+				
+				<p>A RECIPE <br>IS A STORY THAT ENDS<br> WITH A GOOD MEAL</p>
+			</div>
+			<img src="<?php echo IMAGE?>home.jpg" style="width: 100%; height: 100%;">
+		</div>
+		<div class="myslide fade">
+		<div class="txt">
+				
+				<p>A RECIPE <br>IS A STORY THAT ENDS<br> WITH A GOOD MEAL</p>
+			</div>
+			<img src="<?php echo IMAGE?>hero.jpg" style="width: 100%; height: 100%;">
+		</div>
+		<div class="myslide fade">
+			<div class="txt">
+				
+				<p>A RECIPE <br>IS A STORY THAT ENDS<br> WITH A GOOD MEAL</p>
+			</div>
+			<img src="<?php echo IMAGE?>img.jpg" style="width: 100%; height: 100%;">
+		</div>
+		<div class="myslide fade">
+			<div class="txt">
+				
+				<p>A RECIPE <br>IS A STORY THAT ENDS<br> WITH A GOOD MEAL</p>
+			</div>
+			<img src="<?php echo IMAGE?>1.jpg" style="width: 100%; height: 100%;">
+		</div>
 
-                <div class="slide first">
-                    <img src="<?php echo IMAGE ?>1.jpg" alt=""> 
-                </div>
 
-                <div class="slide ">
-                    <img src="<?php echo IMAGE ?>2.jpg" alt=""> 
-                </div>
-
-                <div class="slide ">
-                    <img src="<?php echo IMAGE ?>home.jpg" alt=""> 
-                </div>
-<!-- auto navigation -->
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-
-                </div>
-
-                <div class="navigation-manuel">
-                    <label for="radio1" class="manuel-btn"></label>
-                    <label for="radio2" class="manuel-btn"></label>
-                    <label for="radio3" class="manuel-btn"></label>
-                </div>
-
-
-
-            </div>
+        	<!-- /fade css -->
+		
+		<!-- onclick js -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		
+		<div class="dotsbox" style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span>
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(4)"></span>
+			
+		</div>
+		<!-- /onclick js -->
         </dic>
 
         <!-- End slider -->
-            
-        
-        <!-- <div class="BGhome main">
-            <img  class="mySlides w3-animate-fading " src="images/home.jpg" alt="">
-            <img  class="mySlides w3-animate-fading" src="images/2.jpg" alt="">
-            <img  class="mySlides w3-animate-fading" src="images/1.jpg" alt="">
-        </div> -->
     </main>
 
 
@@ -208,22 +230,9 @@
 
         </div>
     </footer>
-    <script>
-        var myIndex = 0;
-        carousel();
-        
-        function carousel() {
-          var i;
-          var x = document.getElementsByClassName("slide");
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-          }
-          myIndex++;
-          if (myIndex > x.length) {myIndex = 1}    
-          x[myIndex-1].style.display = "block";  
-          setTimeout(carousel, 6000);    
-        }
-        </script>
-        <script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
+
+       
+       <script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
+       <script src="<?php echo JS ?>/slider.js"></script>
 </body>
 </html>

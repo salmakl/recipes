@@ -14,7 +14,7 @@
         }
 
         public function getRecipes() {
-            $this->db->query("SELECT r.id,r.name,r.description,status,r.img,t.name as type FROM recipes r,type t WHERE t.id=r.type ");
+            $this->db->query("SELECT r.id,r.name,r.description,status,r.img,t.name as type FROM recipes r,type t WHERE t.id=r.type");
             $recipes = $this->db->resultSet();
             return $recipes;
         }
@@ -30,6 +30,17 @@
 
             //Bind values
             $this->db->bind(':category', $category);
+
+            //Execute function
+            $recipes = $this->db->resultSet();
+            
+            return $recipes;
+        }
+        public function getByUser($id) {
+            $this->db->query("SELECT r.id,r.name,r.img,u.id as user FROM recipes r,users u WHERE u.id=r.user AND u.id=:id AND r.status=1 ");
+
+            //Bind values
+            $this->db->bind(':id', $id);
 
             //Execute function
             $recipes = $this->db->resultSet();
@@ -59,14 +70,16 @@
             return $recipes;
         }
 
-        public function store($name,$description,$ingrediant,$type,$img) {
-           $this->db->query('INSERT INTO recipes (name, description, ingrediant, type,img) VALUES(:name, :description, :ingrediant, :type, :img)');
+        public function store($name,$description,$ingrediant,$type,$user,$category,$img) {
+           $this->db->query('INSERT INTO recipes (name, description, ingrediants, type, user, img, category) VALUES(:name,:description,:ingrediant,:type,:user,:img,:category)');
           
            //Bind values
            $this->db->bind(':name', $name);
            $this->db->bind(':description', $description);
            $this->db->bind(':ingrediant', $ingrediant);
            $this->db->bind(':type', $type);
+           $this->db->bind(':user', $user);
+           $this->db->bind(':category', $category);
            $this->db->bind(':img', $img);
            
            //Execute function
@@ -92,15 +105,34 @@
            }
         }
 
-        public function update($name,$description,$ingrediant,$type,$img){
-            $this->db->query("UPDATE recipes SET name=:name, description=:description, type=:type, img=:img WHERE id=:id");
+        public function getImg($id) {
+            $this->db->query("SELECT img FROM recipes WHERE id = $id");
+            $recipe = $this->db->single();
+            return $recipe['img'];
+        }
+        public function edit($id) {
+            
+            $this->db->query("SELECT recipes.id,recipes.name AS recipe,recipes.description,recipes.ingrediants,type.name,categories.title,type.id AS type,categories.id AS category FROM recipes,type,categories WHERE recipes.type=type.id AND recipes.category=categories.id AND recipes.id=:id");
+            
+            //Bind values
+            $this->db->bind(':id', $id);
+
+            //Execute function
+            $recipes = $this->db->single();
+            return $recipes;
+        }
+
+        public function update($name,$description,$ingrediants,$type,$category,$img,$id){
+            $this->db->query("UPDATE `recipes` SET `name`=:name,`description`=:description,`ingrediants`=:ingrediants,`type`=:type,`img`=:img,`category`=:category WHERE `id`=:id");
 
              //Bind values
              $this->db->bind(':name', $name);
              $this->db->bind(':description', $description);
-             $this->db->bind(':ingrediant', $ingrediant);
+             $this->db->bind(':ingrediants', $ingrediants);
              $this->db->bind(':type', $type);
+             $this->db->bind(':category', $category);
              $this->db->bind(':img', $img);
+             $this->db->bind(':id', $id);
 
             //Execute function
             try {
@@ -148,4 +180,21 @@
                 }
 
         }
+
+        public function getCategories() {
+            $this->db->query("SELECT * FROM categories");
+
+            //Execute function
+            $categories = $this->db->resultSet();
+            return $categories;
+        }
+        public function getTypes() {
+            $this->db->query("SELECT * FROM type");
+
+            //Execute function
+            $types = $this->db->resultSet();
+            return $types;
+        }
+
+  
     }

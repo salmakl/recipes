@@ -2,7 +2,9 @@
     session_start();
     class Users extends Controller {
         
+        public $data = [];
 
+        
         public function __construct() {
             $this->userModel = $this->model('User');
         }
@@ -21,10 +23,50 @@
             $this->view('overview');
         }
 
+        public function getUser()
+        {
+            $id=$_SESSION['id'];
+           $user= $this->userModel->getUser($id);
+       
+           $this->view('profile',$user);   
+        }
+        public function getPassword()
+        {
+           $id=$_SESSION['id'];
+           $user= $this->userModel->getPassword($id);
+            // print_r($user);
+             return $user;
+        }
+        public function editPassword()
+        {
+        //    die(var_dump($this->data)); 
+           $id=$_SESSION['id'];
+           $old=$this->data['old'];
+           $new=$this->data['new'];
+           $user= $this->userModel->getPassword($id);
+            if($old!=$user){
+                return false;
+            }else {
+
+                $this->userModel->editPassword($id,$new);
+                print_r(json_encode(true));
+            }
+        }
+        public function editProfil()
+        {
+            // die(var_dump($this->data)); 
+           $id=$_SESSION['id'];
+           $fname=$this->data['fname'];
+           $lname=$this->data['lname'];
+           $email=$this->data['email'];
+ 
+            $this->userModel->editProfil($id,$fname,$lname,$email);
+            print_r(json_encode(true));
+            
+        }
         public function getUsers()
         {
            $users= $this->userModel->getUsers();
-        //    die(var_dump($users));
            $this->view('users',$users);   
         }
 

@@ -88,15 +88,18 @@
         <div class="content">
 
             <div class="title">
-             
+            <div class="logo">
+                   
+                   </div>
                
             </div>
         
-
+            
          
             <h2>Cuisine Types</h2>
             <div class="add">
-            <i class="far fa-plus-square"></i>
+                <a href="<?php echo URLROOT ?>/types/AddType"><i class="far fa-plus-square"></i></a>
+            
             </div>
             <div class="table-container">
                 <table>
@@ -109,25 +112,48 @@
 
                       
                     </tr>
-                    
-                    <?php foreach ($data as $row){ 
+                   
+                    <?php 
+                     $i=1;
+                    foreach ($data as $row){ 
+                        
                     ?>
 
 
-                        <tr>
-                            <td class="name"><?= $row['name'] ?></td>
-                            <td class="image" ><img src="<?php echo IMAGE.$row['img']?>" alt=""></td>
-                            <td class="" ><a href=""><i class="far fa-edit"></i></a></td>
+                    <form action="<?php echo URLROOT ?>/types/edit" method="post" enctype="multipart/form-data">
+                    <tr>
+                    <td>
+                    <input type="hidden"  id="id" name="id" value="<?=$row['id']?>">
+                    <label id="labelname<?=$i?>"><?= $row['name'] ?></label>
+                    <input type="text" class="text" name="nameT" id="nomT<?=$i?>" value="<?= $row['name'] ?>" style="display:none">
+                    </td>
+                    <td class="text-center">
+                   
+                    <label id="labelimg<?=$i?>"><img src="<?php echo IMAGE.$row['img']?>" alt=""></label>
+                    <input type="file" class="text" name="imgT" id="img" hidden>
+                    <label class="upload" for="img"  id="imgT<?=$i?>" style="display:none"><i class="fas fa-arrow-up"></i></label>
+                    </td>
+                            
+                    <td  >
+                    <a class="edit" onclick="edit(<?=$i?>)" id="editButton<?= $i ?>"><i class="far fa-edit"></i></a>
+                    <a class="edit" href="" id="deleteButton<?= $i ?>"><i class="far fa-trash-alt"></i></a>
+                    
+                   
+                    <button class="edite" id="saveButton<?=$i?>" name="update" style="display:none"><i class="fas fa-save"></i></button>
+                    
+                    <a class="edite" onclick="cancel(<?=$i?>)" class="btn btn-warning btn-xs" id="cancelButton<?=$i?>" style="display:none"><i class="fas fa-window-close"></i></a>
+                    </td>
 
-                        </tr>
+                    </tr>
+                    </form>
 
-                        <?php }?>
+                        <?php $i++; }?>
             
                     
                 </table>
             </div>
             </div>
-
+<script src="<?php echo JS ?>/edit.js"></script>
 </body>
 
 </html>

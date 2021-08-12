@@ -39,7 +39,7 @@
       }
 
       // Get params
-      // $this->currentController->data=file_get_contents("php://input");
+      $this->currentController->data=json_decode(file_get_contents("php://input"),true);
 
       $this->params = $url ? array_values($url) : [];
 

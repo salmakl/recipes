@@ -86,15 +86,18 @@
         <div class="content">
 
             <div class="title">
-                <div class="logo">
+            <div class="logo">
                    
-                </div>
+                   </div>
                
             </div>
         
 
          
             <h2>Recipes</h2>
+            <div class="add">
+            <a href="<?php echo URLROOT ?>/recipes/addRecipe"><i class="far fa-plus-square"></i></a>
+                </div>
         
             <div class="table-container">
                 <table>
@@ -106,6 +109,7 @@
                         <th><h6>Status</h6></th>
                         <th><h6>Image</h6></th>
                         <th><h6>Status</h6></th>
+                        <th><h6>Actions</h6></th>
                       
                     </tr>
                     
@@ -119,13 +123,19 @@
 
 
                         <tr>
-                            <td class="name"><?= $row['name'] ?></td>
+                            <td class="name">
+                             <label class=""><?= $row['name'] ?></label> 
+                        </td>
                             <td class="category"><?= $row['type'] ?> Food</td>
                             <td class="category"><?= $status ?></td>
                             <td class="image" ><img src="<?php echo IMAGE.$row['img']?>" alt=""></td>
                             <td class="status">
-                                <a href="<?php echo URLROOT ?>/recipes/approuved/<?=$row['id']?>"><img src="<?php echo IMAGE?>check1.svg" alt=""></a>
-                                <a href="<?php echo URLROOT ?>/recipes/Napprouved/<?=$row['id']?>"><img src="<?php echo IMAGE?>x1.svg" alt=""></td></a>
+                                <a href="<?php echo URLROOT ?>/recipes/approuved/<?=$row['id']?>"><img src="<?php echo IMAGE?>check1.svg" ></a>
+                                <a href="<?php echo URLROOT ?>/recipes/Napprouved/<?=$row['id']?>"><img src="<?php echo IMAGE?>x1.svg" ></a></td>
+                            <td class="status">
+                            <a href="<?php echo URLROOT ?>/recipes/edit/<?php echo $row['id']?>"  ><img src="<?php echo IMAGE?>pen.svg" ></i></a>
+                            <a href="<?php echo URLROOT ?>/recipes/delete/<?php echo $row['id']?>" ><img src="<?php echo IMAGE?>delete.svg" ></a>
+                        </td>
                         </tr>
 
                         <?php }?>

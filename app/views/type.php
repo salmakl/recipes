@@ -16,11 +16,12 @@
     <body>
             <!--begin header-->
             <header>
-                <a href="index.php"><img src="images/logo.png" alt="LOGO"></a>
+                <div id="logo">Quick<span id="logo-s">Cook</span></div>
                 <ul>
                     <li ><a href="<?php echo URLROOT ?>">Home</a></li>
                     <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
-                    <li class="active"><a href="<?php echo URLROOT ?>/types">Categories</a></li>  
+                    <li class="active"><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+                    <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
                 </ul>
     
                 <?php if(empty($_SESSION['id'])): ?>

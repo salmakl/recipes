@@ -8,9 +8,13 @@ session_start();
 
         public function index(){
 
-        $recipes = $this->recipesModel->getAll();   
+        $recipes = $this->recipesModel->getAll();  
+        if (isset($_SESSION['id'])){
         $this->getWishlist();
-        $this->view('recipes',$recipes); 
+        $this->view('recipes',$recipes); }
+        else{
+            $this->view('recipes',$recipes);
+        }
         }
         public function getRecipes(){
 
@@ -34,8 +38,11 @@ session_start();
             }
 
         public function addRecipe(){
-
-        $this->view('addRecipe'); 
+        $types=$this->recipesModel->getTypes();
+        $categories=$this->recipesModel->getCategories();
+        $content = array($types,$categories);
+        // die(var_dump($content));
+        $this->view('addRecipe',$content); 
         }
         
         public function getById($id){        
@@ -45,6 +52,13 @@ session_start();
         $content = array($recipe,$new);
         $this->view('details',$content); 
         }
+        public function getByUser(){    
+
+        $id=$_SESSION['id'];
+        $recipes = $this->recipesModel->getByUser($id); 
+  
+        $this->view('profile',$recipes); 
+        }
 
 
         public function indexByCategory($category){
@@ -53,6 +67,7 @@ session_start();
             return $recipes;
         }
         public function getWishlist(){
+            if(isset($_SESSION['id']))
             $id=$_SESSION['id'];
             $list = $this->recipesModel->getWishlist($id); 
 
@@ -69,22 +84,61 @@ session_start();
         }
 
         public function store(){
-            if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST['ingrediant']) && isset($_POST['type']) && isset($_POST['img'])){
-                if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['ingrediant']) && !empty($_POST['type']) && !empty($_POST['type']))
-                {
+            if(isset($_POST['add'])){
+
                     $name=$_POST['name'];
                     $description=$_POST['description'];
-                    $ingrediant=$_POST['ingrediant'];
+                    $ingrediant=$_POST['ingrediants'];
                     $type=$_POST['type'];
-                    $img=$_POST['img'];
+                    $category=$_POST['category'];
+                    $user=$_SESSION['id'];  
                     
-                   $a= $this->recipesModel->store($name,$description,$ingrediant,$type,$img);
-                   
+                    // $img=$_POST['img'];
+                    if(isset($_FILES['img'])  && !empty($_FILES["img"]["name"])){
+                        $image=time().$_FILES["img"]["name"];
+                        move_uploaded_file($_FILES['img']["tmp_name"],"../public/images/".time().$_FILES["img"]["name"]);
+                        
+                    }
+
+                
+                    
+                   $a= $this->recipesModel->store($name,$description,$ingrediant,$type,$user,$category,$image);
+                //    echo 'here';
                     $this->index();
                 }
+
+            }
+            public function getImg($id)
+            {
+                
+                $img = $this->recipesModel->getImg($id);    
+                return $img;
+            }
+                public function update(){
+                    
+        
+                            $name=$_POST['name'];
+                            $description=$_POST['description'];
+                            $ingrediants=$_POST['ingrediants'];
+                            $type=$_POST['type'];
+                            $category=$_POST['category'];
+                            $id=$_POST['id']; 
+                            
+                            
+                            
+                            if(isset($_FILES['img'])  && !empty($_FILES["img"]["name"])){
+                                $image=time().$_FILES["img"]["name"];
+                                move_uploaded_file($_FILES['img']["tmp_name"],"../public/images/".time().$_FILES["img"]["name"]);
+                                
+                            } else{
+                                $img=$this->getImg($id);
+                                }
+                                
+                           $a= $this->recipesModel->update($name,$description,$ingrediants,$type,$category,$img,$id);
+                        // die(var_dump($a));
+                            $this->getByUser();
+                        }
     
-        }
-    }
         public function Add2Favoris($id_recipe,$id_user){
             $id_user=$_SESSION['id'];
            
@@ -110,11 +164,20 @@ session_start();
 
 
 
-        public function edit(){
-
+        public function edit($id)
+        {
+           $recipe= $this->recipesModel->edit($id);
+           $types=$this->recipesModel->getTypes();
+           $categories=$this->recipesModel->getCategories();
+           $content = array($types,$categories,$recipe);
+        //    die(var_dump($content[0]));
+           $this->view('editRecipe',$content);
+            
         }
 
-        public function delete(){
-   
+        public function delete($id){
+            
+            $this->recipesModel->delete($id);
+            header("location:" . $_SERVER['HTTP_REFERER']);
     }
 }
