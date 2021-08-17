@@ -14,10 +14,11 @@
     <title>R E C I P E S</title>
 </head>
 <body>
+<script src="<?php echo JS?>menu.js"></script>
         <!--begin header-->
         <header>
         <div id="logo">Quick<span id="logo-s">Cook</span></div>
-            <ul>
+            <ul class="nav">
                      <li ><a href="<?php echo URLROOT ?>">Home</a></li>
                     <li class="active"><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
                     <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
@@ -30,14 +31,35 @@
             <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
                 <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My Recipes</a></li>
-                    <li><a href="#">logout</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">My Recipes</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
             </div>        <?php endif;?>
-      
+
+        <svg class="menu"  viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="toggle()">
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+        </svg> 
+            <nav class="hum" id="menu-display" style="display:none" >
+        <ul>
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+            <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+            <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
+            <?php if(!empty($_SESSION['id'])): ?>
+            <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/favoris">Wishlist</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+            <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>   
+            <?php else: ?>
+            <li><a href="<?php echo URLROOT ?>/users">login</a></li>  
+            <?php endif;?>   
+        </ul>
+        </nav>
         </header>
         
         <!--End header-->
@@ -63,7 +85,7 @@
                             
                             <p class="title"><?= $row['name'] ?></p>
                             <?php if(isset($row['id'])&& isset($_SESSION['wishlist']) && in_array($row['id'],$_SESSION['wishlist'])): ?>
-                            <a href="<?php echo URLROOT ?>/recipes/Add2Favoris/<?php echo $row['id'] ?>/<?php echo $row['user'] ?>"><img class=" favoris" src="<?php echo IMAGE ?>icons/hearedt.svg" alt=""></a>
+                            <a href="<?php echo URLROOT ?>/recipes/RemoveFavori/<?php echo $row['id'] ?>/<?php echo $row['user'] ?>"><img class=" favoris" src="<?php echo IMAGE ?>icons/hearedt.svg" alt=""></a>
                             <?php else: ?>
                                 <a href="<?php echo URLROOT ?>/recipes/Add2Favoris/<?php echo $row['id'] ?>/<?php echo $row['user'] ?>"><img class=" favoris" src="<?php echo IMAGE ?>icons/heart.svg" alt=""></a>
                                 <?php endif; ?>
@@ -89,6 +111,7 @@
                         <li>Home</li>
                         <li>Recipes</li>
                         <li>Categories</li>
+                        <li>Types</li>
                         
                     </ul>
                 </div>

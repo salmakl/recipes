@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<script src="<?php echo JS ?>menu.js"></script>
 
 
     <!--begin header-->
@@ -20,38 +21,47 @@
      <div id="logo">Quick<span id="logo-s">Cook</span></div>
         
         <ul class="nav">
-            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li class="active"><a href="<?php echo URLROOT ?>">Home</a></li>
             <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
             <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
             <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
         </ul>
         
-        <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+        <?php if(empty($_SESSION['id'])): ?>
+        <a href="<?php echo URLROOT ?>/users"><input id="sign" type="submit" name="signin" value="Sign in" class="Btn"></a>
+        <?php else: ?>
+            <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
                 <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">logout</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipes</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
-            </div>  
-        <svg class="menu" viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="nav()">
+            </div>        
+            <?php endif;?>
+        <svg class="menu" viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="toggle()">
         <rect width="100" height="20"></rect>
         <rect y="30" width="100" height="20"></rect>
         <rect y="60" width="100" height="20"></rect>
         </svg>      
-            
-        <nav class="hum" >
+    <nav class="hum" id="menu-display" style="display:none">           
         <ul>
             <li ><a href="<?php echo URLROOT ?>">Home</a></li>
             <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
             <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
             <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">logout</a></li>  
+            <?php if(!empty($_SESSION['id'])): ?>
+            <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/favoris">Wishlist</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+            <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>   
+            <?php else: ?>
+            <li><a href="<?php echo URLROOT ?>/users">login</a></li>  
+            <?php endif;?>   
         </ul>
-        </nav>
+</nav>
   
     </header>
     <!--End header-->
@@ -119,26 +129,26 @@
         <div class="adv-cont">
             <div class="adv">
                 <img src="<?php echo IMAGE ?>icons/cake-slice.svg" alt="Icon">
-                <h3>Lorem, ipsum.</h3>
+                <h3>Sweets.</h3>
                 
             </div>
             <div class="adv">
                 <img src="<?php echo IMAGE ?>icons/chicken-leg.svg" alt="Icon">
-                <h3>Lorem, ipsum.</h3>
+                <h3>Salts.</h3>
                 
             </div>
             <div class="adv">
                 <img src="<?php echo IMAGE ?>icons/drink.svg" alt="Icon">
-                <h3>Lorem, ipsum.</h3>
+                <h3>Juices.</h3>
                 
             </div>
             <div class="adv">
                 <img src="<?php echo IMAGE ?>icons/spaguetti.svg" alt="Icon">
-                <h3>Lorem, ipsum.</h3> 
+                <h3>Quick & Easy.</h3> 
             </div>
             <div class="adv">
                 <img src="<?php echo IMAGE ?>icons/salad.svg" alt="Icon">
-                <h3>Lorem, ipsum.</h3> 
+                <h3>Salads.</h3> 
             </div>
         </div>
       
@@ -146,28 +156,28 @@
 
     </section>
     
-    <section>
+    <section class="flow">
         <h1>Quick & Easy</h1>
         <div class="popular">
             <div class="slides">
                 <img class="img" src="images/3.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/4.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/3.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/4.jpg" alt="">
-                <img  class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img  class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/3.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
         </div>
 
@@ -179,23 +189,23 @@
         <div class="popular">
             <div class="slides">
                 <img class="img" src="images/juce1.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/juce2.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/juce3.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/juce1.jpg" alt="">
-                <img  class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img  class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
             <div class="slides">
                 <img class="img" src="images/juce2.jpg" alt="">
-                <img class="favoris" src="images/icons/heart.svg" alt="">
+                <!-- <img class="favoris" src="images/icons/heart.svg" alt=""> -->
             </div>
         </div>
 
@@ -213,6 +223,7 @@
                     <li>Home</li>
                     <li>Recipes</li>
                     <li>Categories</li>
+                    <li>Types</li>
                     
                 </ul>
             </div>

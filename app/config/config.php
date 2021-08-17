@@ -10,7 +10,7 @@
 
     //URLROOT (Dynamic links)
     define('URLROOT', 'http://localhost/recipes');
-    define('JS', 'http://localhost/Recipes/public/js');
+    define('JS', 'http://localhost/Recipes/public/js/');
     define('CSS_PATH', 'http://localhost/Recipes/public/css');
     define('IMAGE', 'http://localhost/Recipes/public/images/');
 

@@ -105,6 +105,39 @@
            }
         }
 
+        public function Rate($data,$id_user) {
+            $this->db->query('INSERT INTO `ratting`(`id_recipe`, `ratting_number`, `id_user`) VALUES (:id_recipe,:rating,:id_user)');
+           
+            //Bind values
+            $this->db->bind(':id_recipe', $data['id_recipe']);
+            $this->db->bind(':rating', $data['rating']);
+            $this->db->bind(':id_user', $id_user);
+ 
+            
+            //Execute function
+            try {
+                $this->db->execute();
+            } catch(PDOException $e) {
+                return $e->getMessage();
+            }
+         }
+
+        public function RemoveFavori($id_recipe,$id_user) {
+           $this->db->query('DELETE FROM `favoris` WHERE id_recipe=:id_recipe AND id_user=:id_user');
+          
+           //Bind values
+           $this->db->bind(':id_recipe', $id_recipe);
+           $this->db->bind(':id_user', $id_user);
+
+           
+           //Execute function
+           try {
+               $this->db->execute();
+           } catch(PDOException $e) {
+               return $e->getMessage();
+           }
+        }
+
         public function getImg($id) {
             $this->db->query("SELECT img FROM recipes WHERE id = $id");
             $recipe = $this->db->single();

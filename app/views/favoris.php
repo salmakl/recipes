@@ -24,11 +24,11 @@
     
                 <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
-                <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My Recipes</a></li>
-                    <li><a href="#">logout</a></li>
+            <ul>
+                    <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
             </div>    

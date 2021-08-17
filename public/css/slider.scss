@@ -176,8 +176,17 @@
 
 /* 5 */
 @media screen and (max-width: 800px){
-	.myslide{
-		height: 500px;
+	main{
+
+		.myslide{
+			// height: 300px;
+			img{
+				object-fit: cover;
+				width: 100%;
+	
+	
+			}
+		}
 	}
 	.txt{
 		letter-spacing: 2px;

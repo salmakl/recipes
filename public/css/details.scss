@@ -121,3 +121,75 @@ h1 { font-size: 1.5em; margin: 10px; }
       font-weight: 700;
     }
   }
+  .cont {
+    display: flex;
+    align-items: center;
+    flex: 3;
+    
+    
+    .contents {
+      width: 300px;
+      height: 500px;
+      margin-right: 70px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      
+      #details {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        
+      }
+      h5 {
+        opacity: 50%;
+      }
+      .title {
+        font-size: 35px;
+        box-shadow: 12px;
+      }
+    }
+  }
+.col{
+  flex: 2;
+}
+main{
+  height:auto;
+}
+
+
+  @media screen and (max-width: 800px) {
+    .cont{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      .contents {
+        align-items: center;
+        margin-right: 0;
+      }
+    }
+
+
+     #details {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+  }
+  .rating {
+    border: none;
+    
+}
+
+// flex-direction: column;
+  }
+
+
+  #Ingredients {
+    label {
+      font-size: 20px;
+font-family: 'Yomogi';
+font-weight: bold;
+margin-left: 10px;
+    }
+  }

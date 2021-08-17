@@ -14,30 +14,56 @@
         <title>C A T E G O R Y</title>
     </head>
     <body>
+    <script src="<?php echo  JS ?>/menu.js"></script>
             <!--begin header-->
             <header>
             <div id="logo">Quick<span id="logo-s">Cook</span></div>
-                <ul>
+                <ul class="nav">
                     <li ><a href="<?php echo URLROOT ?>">Home</a></li>
                     <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
                     <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
                     <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
                 </ul>
     
-                <?php if(empty($_SESSION['id'])): ?>
-                <a href="<?php echo URLROOT ?>/users"><input  type="submit" name="signin" value="Sign in" class="Btn"></a>
+                <?php if(!empty($_SESSION['id'])): ?>
+                <a href="<?php echo URLROOT ?>/users"><input id="sign" type="submit" name="signin" value="Sign in" class="Btn"></a>
                 <?php else: ?>
                  <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
                  <div class="drop-down">
-                <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My Recipes</a></li>
-                    <li><a href="#">logout</a></li>
+                 <ul>
+                    <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
-            </div>                 <?php endif;?>    
-          
+            </div>                
+            
+
+            <?php endif;?>    
+
+            <svg class="menu"  viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="toggle()">
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+        </svg>      
+            
+        <nav class="hum" id="menu-display" style="display:none" >
+        <ul>
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+            <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+            <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
+            <?php if(!empty($_SESSION['id'])): ?>
+            <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/favoris">Wishlist</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+            <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>   
+            <?php else: ?>
+            <li><a href="<?php echo URLROOT ?>/users">login</a></li>  
+            <?php endif;?>   
+        </ul>
+        </nav>
             </header>
             
             <!--End header-->
@@ -53,19 +79,21 @@
                         
                         foreach ($data as $row){
                             
-                        //    print_r($row['name']); exit("");
+                        //    print_r($row);
+                        //     exit("");
                         ?>
               
                <div class="row">
                         <div class="col">
                             <div class="item">
-                                <a href="<?php echo URLROOT ?>/recipes/getById/<?php echo $row['id'] ?>"><img class="img" src="<?PHP echo IMAGE.$row['img'] ?>" alt=""></a>
+                                <a href="<?php echo URLROOT ?>/recipes/getById/<?php echo $row['id'] ?>">
+                                <img class="img" src="<?PHP echo IMAGE.$row['img'] ?>" alt=""></a>
                                 
                                 <p class="title"><?= $row['name'] ?></p>
                               
                             </div>
                         </div>
-               
+               </div>
                         <?php }?>
 
             </section>
@@ -83,6 +111,7 @@
                             <li>Home</li>
                             <li>Recipes</li>
                             <li>Categories</li>
+                            <li>Types</li>
                             
                         </ul>
                     </div>

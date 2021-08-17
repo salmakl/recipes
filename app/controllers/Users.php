@@ -54,7 +54,7 @@
         }
         public function editProfil()
         {
-            // die(var_dump($this->data)); 
+            if(isset($_SESSION['id'])){
            $id=$_SESSION['id'];
            $fname=$this->data['fname'];
            $lname=$this->data['lname'];
@@ -62,12 +62,18 @@
  
             $this->userModel->editProfil($id,$fname,$lname,$email);
             print_r(json_encode(true));
-            
+            }else{
+                $this->index();
+            }
         }
         public function getUsers()
         {
+            if(isset($_SESSION['id']) && $_SESSION['role']=='admin'){
            $users= $this->userModel->getUsers();
-           $this->view('users',$users);   
+           $this->view('users',$users);
+         }  else{
+             $this->index();
+         }
         }
 
 
@@ -118,10 +124,20 @@
                     echo 'incorrect password';
                 }
             }
-            
-            
-
         }
+            public function delete($id){
+            
+                $this->userModel->delete($id);
+                header("location:" . $_SERVER['HTTP_REFERER']);
+        }
+
+        
+        function logout(){
+            session_start();
+            session_unset();
+            session_destroy();
+            header('location:http://localhost/recipes');
+            }
 
 
     }

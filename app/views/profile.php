@@ -14,33 +14,13 @@
     <title>P R P O F I L E</title>
 </head>
 <body>
-<script>
-function myFunction() {
-    var x = document.querySelector("header ul");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = " none";
-    }
-  }
-  window.onresize=function(){
-      if(window.innerWidth >= 800){
-          document.querySelector("header ul").style.display = "flex";
-      }else{
-          document.querySelector("header ul").style.display = " none";
-      }
-  }
-  document.querySelector(".menu").addEventListener("click",myFunction);
-
-
-    </script>
-
+<script src="<?php echo JS?>menu.js"></script>
     <!--begin header-->
     <header>
      <div id="logo">Quick<span id="logo-s">Cook</span></div>
         
         <ul class="nav">
-            <li class="active"><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
             <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
             <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
             <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
@@ -48,29 +28,35 @@ function myFunction() {
         
         <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
+                
                 <ul>
                     <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">App Recipe</a></li>
-                    <li><a href="#">logout</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipes</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
             </div>  
-        <svg class="menu" viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="myFunction()">
+        <svg class="menu"  viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="toggle()">
         <rect width="100" height="20"></rect>
         <rect y="30" width="100" height="20"></rect>
         <rect y="60" width="100" height="20"></rect>
         </svg>      
             
-        <nav class="hum" >
+        <nav class="hum" id="menu-display" style="display:none" >
         <ul>
             <li ><a href="<?php echo URLROOT ?>">Home</a></li>
             <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
             <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
             <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">logout</a></li>  
+            <?php if(!empty($_SESSION['id'])): ?>
+            <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/favoris">Wishlist</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+            <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>   
+            <?php else: ?>
+            <li><a href="<?php echo URLROOT ?>/users">login</a></li>  
+            <?php endif;?>   
         </ul>
         </nav>
   
@@ -146,6 +132,7 @@ function myFunction() {
                         </div>
                         
                     </div>
+                    </div>
            
                     <?php }?>
 
@@ -166,6 +153,7 @@ function myFunction() {
                 <li>Home</li>
                 <li>Recipes</li>
                 <li>Categories</li>
+                <li>Types</li>
                 
             </ul>
         </div>

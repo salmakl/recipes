@@ -22,12 +22,12 @@
             <h1 class="title"> Member Login </h1>
             <div class="input">
                 <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="E-mail" name="email" class="mainInput">
+                <input type="email" placeholder="E-mail" name="email" class="mainInput" required>
             </div>
 
             <div class="input">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" name="pwd" class="mainInput">
+                <input type="password" placeholder="Password" name="pwd" class="mainInput" required>
             </div>
 
             <div class="btns"> 

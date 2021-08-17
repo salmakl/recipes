@@ -121,7 +121,7 @@ header .active {
   background: white;
   position: absolute;
   right: 20px;
-  z-index: 1;
+  z-index: 999;
 }
 
 .drop-trigger .drop-down ul li:hover {
@@ -150,11 +150,8 @@ body {
   height: 100vh;
 }
 
-.BGhome img {
-  width: 100%;
-  height: 80vh;
-  -o-object-fit: cover;
-     object-fit: cover;
+.flow {
+  overflow-x: scroll;
 }
 
 footer {
@@ -188,6 +185,7 @@ footer li {
 footer i {
   padding: 10px 10px;
   font-size: 30px;
+  background: unset;
 }
 
 section {
@@ -265,7 +263,16 @@ h2 {
 
 .popular .slides {
   margin-right: 10px;
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .popular .slides .img {
@@ -319,45 +326,6 @@ body .container .grande-image {
   height: 80vh;
 }
 
-body .container .contents {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
-  padding: 12px;
-  height: 50%;
-}
-
-body .container .contents .stars {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding: 0 30px 0 20px;
-}
-
-body .container .contents #star {
-  width: 20px;
-  margin-top: 15px;
-}
-
-body .container .contents h5 {
-  opacity: 50%;
-}
-
-body .container .contents .title {
-  font-size: 35px;
-  -webkit-box-shadow: 12px;
-          box-shadow: 12px;
-}
-
 body .container .btns {
   display: inline;
 }
@@ -379,33 +347,6 @@ body .container .btns .Btn2 {
   border-radius: 50px;
   font-weight: bolder;
   cursor: pointer;
-}
-
-.cont {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.cont .contents {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
-  padding: 12px;
-  height: 10%;
-}
-
-.cont .contents #details {
-  width: 50vh;
 }
 
 .form #img_label {
@@ -558,26 +499,6 @@ body .container .btns .Btn2 {
   line-height: 0.8;
 }
 
-@media (max-width: 767px) {
-  .slideshow-text {
-    font-size: 40px;
-  }
-}
-
-.the-most {
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  width: 50vw;
-  max-width: 200px;
-  padding: 10px;
-}
-
-.the-most img {
-  max-width: 100%;
-}
-
 main {
   margin: 0;
   padding: 0;
@@ -592,117 +513,6 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-main .slider {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-main .slider .slides {
-  width: 500%;
-  height: 700px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-main .slider .slides input {
-  display: none;
-}
-
-.slide {
-  width: 20%;
-  -webkit-transition: 3s;
-  transition: 3s;
-}
-
-.slide img {
-  width: 100%;
-  height: 600px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-/*css for manual slide navigation*/
-.navigation-manual {
-  position: absolute;
-  width: 800px;
-  margin-top: -40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.navigation-manual .manual-btn {
-  border: 2px solid #bd5025;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  -webkit-transition: 2s;
-  transition: 2s;
-}
-
-.manual-btn:not(:last-child) {
-  margin-right: 40px;
-}
-
-.manual-btn:hover {
-  background: #bd5025;
-}
-
-#radio1:checked ~ .first {
-  margin-left: 0;
-}
-
-#radio2:checked ~ .first {
-  margin-left: -20%;
-}
-
-#radio3:checked ~ .first {
-  margin-left: -40%;
-}
-
-/*css for automatic navigation*/
-.navigation-auto {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 800px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 570px;
-  margin-left: 25%;
-}
-
-.navigation-auto div {
-  border: 2px solid #bd5025;
-  padding: 5px;
-  border-radius: 10px;
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-
-.navigation-auto div:not(:last-child) {
-  margin-right: 40px;
-}
-
-#radio1:checked ~ .navigation-auto .auto-btn1 {
-  background: #bd5025;
-}
-
-#radio2:checked ~ .navigation-auto .auto-btn2 {
-  background: #bd5025;
-}
-
-#radio3:checked ~ .navigation-auto .auto-btn3 {
-  background: #bd5025;
 }
 
 .input {
@@ -774,6 +584,52 @@ main .slider .slides input {
   width: 120px;
 }
 
+@media screen and (max-width: 900px) {
+  #sign {
+    display: none;
+  }
+  .grande-image {
+    display: none;
+  }
+  .popular {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    overflow-x: scroll;
+  }
+  .popular .slides {
+    margin-right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .popular .slides .img {
+    width: 250px;
+    height: 300;
+    border-radius: 2%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .popular .slides .favoris {
+    position: absolute;
+    width: 30px;
+    bottom: 10;
+    left: 10;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .body {
     overflow-x: hidden;
@@ -805,7 +661,7 @@ main .slider .slides input {
     position: absolute;
     top: -30;
     right: 0;
-    z-index: 1;
+    z-index: 999;
   }
   .hum ul {
     background-color: white;
@@ -836,7 +692,7 @@ main .slider .slides input {
   header .active {
     text-decoration: underline;
     -webkit-text-decoration-color: white;
-    text-decoration-color: white;
+            text-decoration-color: white;
   }
 }
 /*# sourceMappingURL=style.css.map */

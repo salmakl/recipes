@@ -204,8 +204,10 @@
 /* /4 */
 /* 5 */
 @media screen and (max-width: 800px) {
-  .myslide {
-    height: 500px;
+  main .myslide img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
   }
   .txt {
     letter-spacing: 2px;

@@ -87,4 +87,17 @@
                     return $e->getMessage();
                 }
         }
+        public function delete($id){
+            $this->db->query("DELETE FROM users WHERE id=:id");
+
+            $this->db->bind(':id', $id);
+
+            //Execute function
+            try {
+                $this->db->execute();
+                return $ok = "ok";
+            } catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
     }

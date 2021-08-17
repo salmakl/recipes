@@ -143,4 +143,94 @@ h1 {
   font-size: 20px;
   font-weight: 700;
 }
+
+.cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.cont .contents {
+  width: 300px;
+  height: 500px;
+  margin-right: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cont .contents #details {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cont .contents h5 {
+  opacity: 50%;
+}
+
+.cont .contents .title {
+  font-size: 35px;
+  -webkit-box-shadow: 12px;
+          box-shadow: 12px;
+}
+
+.col {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+main {
+  height: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .cont {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+  .cont .contents {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: 0;
+  }
+  #details {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .rating {
+    border: none;
+  }
+}
+
+#Ingredients label {
+  font-size: 20px;
+  font-family: 'Yomogi';
+  font-weight: bold;
+  margin-left: 10px;
+}
 /*# sourceMappingURL=details.css.map */

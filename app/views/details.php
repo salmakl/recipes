@@ -11,41 +11,70 @@
     <link rel="stylesheet" href="<?php echo CSS_PATH ?>/details.css">
     <title>R E C I P E</title>
 </head>
+<body>
+<script src="<?php echo JS ?>menu.js"></script>
+
 
     <!--begin header-->
     <header>
-    <div id="logo">Quick<span id="logo-s">Cook</span></div>
-        <ul>
-        <ul>
+     <div id="logo">Quick<span id="logo-s">Cook</span></div>
+        
+        <ul class="nav">
             <li ><a href="<?php echo URLROOT ?>">Home</a></li>
             <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
             <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
             <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
         </ul>
-        </ul>
-        <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
+        
+        <?php if(empty($_SESSION['id'])): ?>
+        <a href="<?php echo URLROOT ?>/users"><input id="sign" type="submit" name="signin" value="Sign in" class="Btn"></a>
+        <?php else: ?>
+            <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">
             <div class="drop-down">
                 <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My Recipes</a></li>
-                    <li><a href="#">logout</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/Wishlist">Wishlist</a></li>
+                    <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">My Recipes</a></li>
+                    <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>
                 </ul>
             </div>
             </div>        
+            <?php endif;?>
+        <svg class="menu" viewBox="0 0 100 80" width="40" height="40" fill="#f55e27c4" onclick="toggle()">
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+        </svg>      
+    <nav class="hum" id="menu-display" style="display:none">           
+        <ul>
+            <li ><a href="<?php echo URLROOT ?>">Home</a></li>
+            <li ><a href="<?php echo URLROOT ?>/recipes">Recipes</a></li>
+            <li ><a href="<?php echo URLROOT ?>/Types">Cuisine Types</a></li>  
+            <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>
+            <?php if(!empty($_SESSION['id'])): ?>
+            <li><a href="<?php echo URLROOT ?>/recipes/getByUser">Profile</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/favoris">Wishlist</a></li>
+            <li><a href="<?php echo URLROOT ?>/recipes/addRecipe">Add Recipe</a></li>
+            <li><a href="<?php echo URLROOT ?>/users/logout">logout</a></li>   
+            <?php else: ?>
+            <li><a href="<?php echo URLROOT ?>/users">login</a></li>  
+            <?php endif;?>   
+        </ul>
+</nav>
   
     </header>
+    <!--End header-->
     
     <!--End header-->
-    <main class="container">
-        <div class="cont">
+<main class="container">
+    <div class="cont">
             
                 <div class="contents">
                 
                     <img src="<?php echo IMAGE.$data[0]['img'] ?>" alt="" id="details">
                     
-                    <fieldset class="rating ">
-        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+     <fieldset class="rating ">
+        <input type="radio" id="star5" name="rating" value="5" /><label onclick="Rate(<?php echo $data[0]['id']?>,5)" class = "full" for="star5" title="Awesome - 5 stars"></label>
         <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
         <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
         <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
@@ -55,15 +84,9 @@
         <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
         <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
         <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-    </fieldset>
-                    <!-- <div class="stars">
-                    <img src="<?php echo IMAGE ?>icons/star.svg" alt="" id="star">
-                    <img src="<?php echo IMAGE ?>icons/star.svg" alt="" id="star">
-                    <img src="<?php echo IMAGE ?>icons/star.svg" alt="" id="star">
-                    <img src="<?php echo IMAGE ?>icons/star.svg" alt="" id="star">
-                    <img src="<?php echo IMAGE ?>icons/star.svg" alt="" id="star">
-                </div> -->
-                </div>
+     </fieldset>
+                  
+     </div>
                 
                 <div class="col">
                     <div class="img-container" ><span>save</span><i class="far fa-heart"></i></div> 
@@ -71,24 +94,20 @@
                         <h2><?php echo $data[0]['name']?></h2>
                         <p><?php echo $data[0]['description']?></p>
                     </div>
-                    <div class="ingredients">
+                    <div class="ingredients" id="">
                         <h2>Ingredients</h2>
                        <!-- <p> <input type="checkbox" name="" id=""> <?php echo $data[0]['ingrediants']?> </p> -->
-                          
+                          <div id="ingredients">
 
-                       <p> <input type="checkbox" name="" id=""> Pâtes – 300 g, Haricots blancs – 500 g, </p>
-                       <p> <input type="checkbox" name="" id=""> Moules – 1 kg, </p>
-                       <p> <input type="checkbox" name="" id=""> Tomates cerises – 200 g, </p>
-                       <p> <input type="checkbox" name="" id=""> Sel, </p>
-                       <p> <input type="checkbox" name="" id=""> Poivre, </p>
+                          </div>
                     </div>
                 </div>
             
-        </div>
-    </main>
+    </div>
+ </main>
 
     <h2>More Recipes Like This</h2>
-    <section class="container">
+    <section class="container" style="overflow-x: scroll;">
         
     <?php
     // print_r($data[1]);
@@ -125,6 +144,7 @@
                 <li>Home</li>
                 <li>Recipes</li>
                 <li>Categories</li>
+                <li>Types</li>
                 
             </ul>
         </div>
@@ -142,3 +162,51 @@
 
     </div>
 </footer>
+<script>
+   
+
+    let str = "<?php echo $data[0]['ingrediants'];?>";
+      let list = document.getElementById("ingredients");
+      let div = document.createElement("div");
+      let label = document.createElement("label");
+      let checkbox = document.createElement("input");
+      checkbox.setAttribute("type", "checkbox");
+
+      let ing = str.split(",");
+      ing.forEach((element) => {
+        label.innerHTML = element;
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        list.appendChild(div.cloneNode(true));
+      });
+let btns = document.querySelectorAll('.full')
+btns.forEach((element) => {
+    element.addEventListener("click",()=>{
+        console.log(element)
+    })
+})
+      async function Rate(id,rating) {
+      const resp = await fetch(
+        "<?php echo URLROOT?>/recipes/rate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            id_recipe: id,
+            rating: rating,
+            
+          }),
+        }
+      )
+      const key  = await resp.json();
+      if(key){
+          alert('Password updated !');
+          profil.classList.remove("profil-active");
+      }
+        }
+</script>
+</body>
+</html>

@@ -11,14 +11,17 @@
         $types = $this->db->resultSet();
         return $types;
     }
+
+    
     public function getByCategory($category) {
-        $this->db->query("SELECT r.img,r.name FROM recipes r, categories c WHERE c.id=r.category AND c.id=$category AND r.status=1");
+        $this->db->query("SELECT r.img,r.name,r.id FROM recipes r, categories c WHERE c.id=r.category AND c.id=$category AND r.status=1");
           //Bind values
           $this->db->bind(':category', $category);
           $recipes = $this->db->resultSet();
+        //   die(var_dump($recipes));
           return $recipes;
     }
-    
+
     public function getImg($id) {
         $this->db->query("SELECT img FROM categories WHERE id = $id");
         $types = $this->db->single();

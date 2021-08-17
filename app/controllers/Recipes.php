@@ -2,6 +2,8 @@
 session_start();
     class Recipes extends Controller {
 
+        public $data = [];
+
         public function __construct() {
             $this->recipesModel = $this->model('Recipe');
         }
@@ -38,36 +40,41 @@ session_start();
             }
 
         public function addRecipe(){
+            if(isset($_SESSION['id'])){
         $types=$this->recipesModel->getTypes();
         $categories=$this->recipesModel->getCategories();
         $content = array($types,$categories);
         // die(var_dump($content));
         $this->view('addRecipe',$content); 
+        }else{
+            header("location:".URLROOT."/users");
         }
-        
+    }
         public function getById($id){        
         $recipe = $this->recipesModel->getById($id); 
         $new = $this->indexByCategory($recipe['type']);
 
         $content = array($recipe,$new);
+        // die(var_dump($content));
         $this->view('details',$content); 
         }
         public function getByUser(){    
 
+        if(isset($_SESSION['id'])){
         $id=$_SESSION['id'];
         $recipes = $this->recipesModel->getByUser($id); 
   
         $this->view('profile',$recipes); 
         }
 
-
+    }
         public function indexByCategory($category){
             $recipes = $this->recipesModel->getCategory($category); 
             // $this->view('home',$recipes);
             return $recipes;
         }
         public function getWishlist(){
-            if(isset($_SESSION['id']))
+            if(isset($_SESSION['id'])){
             $id=$_SESSION['id'];
             $list = $this->recipesModel->getWishlist($id); 
 
@@ -80,7 +87,7 @@ session_start();
             $_SESSION['wishlist'] = $wishlist;
             return $wishlist;
         
-
+        }
         }
 
         public function store(){
@@ -140,9 +147,33 @@ session_start();
                         }
     
         public function Add2Favoris($id_recipe,$id_user){
+            if(isset($_SESSION['id'])){
             $id_user=$_SESSION['id'];
            
         $a= $this->recipesModel->Add2Favoris($id_recipe,$id_user);   
+               
+        // $this->back();
+        header("location:" . $_SERVER['HTTP_REFERER']);
+            }else{
+                header("location:".URLROOT."/users");
+            }
+    }
+        public function Rate(){
+        
+            $id_user=$_SESSION['id'];
+            // die(var_dump($this->data));
+        //    $data['id_recipe'] = $this->data['id_recipe'];
+        //    $data['rating'] = $this->data['rating'];
+        $a= $this->recipesModel->Rate($this->data,$id_user);   
+               print_r(json_encode($a));
+        // $this->back();
+        // header("location:" . $_SERVER['HTTP_REFERER']);
+       
+    }
+        public function RemoveFavori($id_recipe,$id_user){
+            $id_user=$_SESSION['id'];
+           
+        $a= $this->recipesModel->RemoveFavori($id_recipe,$id_user);   
                
         // $this->back();
         header("location:" . $_SERVER['HTTP_REFERER']);

@@ -98,7 +98,7 @@ header {
       background: white;
       position: absolute;
       right: 20px;
-      z-index: 1;
+      z-index: 999;
 
       li:hover {
         background: #f6f6f6;
@@ -121,10 +121,8 @@ body {
   height: 100vh;
 }
 
-.BGhome img {
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
+.flow{
+  overflow-x: scroll;
 }
 
 footer {
@@ -151,6 +149,7 @@ footer {
   i {
     padding: 10px 10px;
     font-size: 30px;
+    background: unset;
   }
 }
 section {
@@ -201,7 +200,10 @@ h2 {
   .slides {
     // display: inline-block;
     margin-right: 10px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 
     .img {
       width: 250px;
@@ -241,32 +243,7 @@ body .container {
     width: 50%;
     height: 80vh;
   }
-  .contents {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 12px;
-    height: 50%;
-    .stars {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 0 30px 0 20px;
-    }
- 
-    #star {
-      width: 20px;
-      margin-top: 15px;
-    }
-    h5 {
-      opacity: 50%;
-    }
-    .title {
-      font-size: 35px;
-      box-shadow: 12px;
-    }
 
-  }
   .btns {
     display: inline;
     .Btn2 {
@@ -288,22 +265,7 @@ body .container {
     }
   }
 }
-.cont {
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  .contents {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 12px;
-    height: 10%;
-    #details {
-      width: 50vh;
-    }
-  }
-}
+
 .form #img_label {
   cursor: pointer;
   width: 50px;
@@ -444,42 +406,14 @@ body .container {
   text-transform: uppercase;
   letter-spacing: 20px;
   line-height: 0.8;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
   
-  @media (max-width: 767px) {
-    font-size: 40px;
-  }
-}
+ 
 
-.the-most {
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  width: 50vw;
-  max-width: 200px;
-  padding: 10px;
 
-  img {
-    max-width: 100%;
-  }
-}
+
+
 
 main {
   margin: 0;
@@ -489,103 +423,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: #23E3C9;
-  .slider {
-    width: 100%;
-    height: auto;
-    // border-radius: 10px;
-    overflow: hidden;
-    .slides {
-      width: 500%;
-      height: 700px;
-      display: flex;
-    }
 
-    .slides input {
-      display: none;
-    }
-  }
 }
 
-.slide {
-  width: 20%;
-  transition: 3s;
-}
-
-.slide img {
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-}
-
-/*css for manual slide navigation*/
-
-.navigation-manual {
-  position: absolute;
-  width: 800px;
-  margin-top: -40px;
-  display: flex;
-  justify-content: center;
-  .manual-btn {
-    border: 2px solid #bd5025;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 2s;
-  }
-}
-
-.manual-btn:not(:last-child) {
-  margin-right: 40px;
-}
-
-.manual-btn:hover {
-  background: #bd5025;
-}
-
-#radio1:checked ~ .first {
-  margin-left: 0;
-}
-
-#radio2:checked ~ .first {
-  margin-left: -20%;
-}
-
-#radio3:checked ~ .first {
-  margin-left: -40%;
-}
-
-/*css for automatic navigation*/
-
-.navigation-auto {
-  position: absolute;
-  display: flex;
-  width: 800px;
-  justify-content: center;
-  margin-top: 570px;
-  margin-left: 25%;
-  div {
-    border: 2px solid #bd5025;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
-  }
-  div:not(:last-child) {
-    margin-right: 40px;
-  }
-}
-
-#radio1:checked ~ .navigation-auto .auto-btn1 {
-  background: #bd5025;
-}
-
-#radio2:checked ~ .navigation-auto .auto-btn2 {
-  background: #bd5025;
-}
-
-#radio3:checked ~ .navigation-auto .auto-btn3 {
-  background: #bd5025;
-}
 
 
 .input {
@@ -646,6 +486,45 @@ main {
   }
 }
 
+
+@media screen and (max-width: 900px) {
+    
+  #sign{
+    display: none;
+  }
+  .grande-image{
+    display: none;
+  }
+  .popular {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    // padding-left: 30px;
+    overflow-x: scroll;
+    .slides {
+      // display: inline-block;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+  
+      .img {
+        width: 250px;
+        height: 300;
+        border-radius: 2%;
+        object-fit: cover;
+      }
+      .favoris {
+        position: absolute;
+        width: 30px;
+        bottom: 10;
+        left: 10;
+      }
+    }
+  }
+
+}
 @media screen and (max-width: 800px) {
 
   .body{
@@ -685,12 +564,12 @@ main {
       // overflow: hidden;
       top: -30;
       right: 0;
-      z-index: 1;
+      z-index: 999;
       ul{
         background-color:white;
-        li:hover {
+          li:hover {
           background: #f6f6f6;
-        }
+          }
       }
     }
     .nav,.drop-trigger{
@@ -719,8 +598,7 @@ main {
     
     header .active {
       text-decoration: underline;
-      -webkit-text-decoration-color: white;
-              text-decoration-color: white;
+      text-decoration-color: white;
     }
   
 

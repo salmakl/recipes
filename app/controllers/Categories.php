@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
     class Categories extends Controller {
 
         public function __construct() {
@@ -47,6 +47,7 @@
         public function getByCategory($category)
         {
             $categories = $this->categoryModel->getByCategory($category); 
+            // die(var_dump($categories)); 
             $this->view('singleCategory',$categories); 
         }
         public function AddCategory()
