@@ -52,9 +52,9 @@ session_start();
     }
         public function getById($id){        
         $recipe = $this->recipesModel->getById($id); 
-        $new = $this->indexByCategory($recipe['type']);
+        $new = $this->indexByCategory($recipe[0]['type']);
 
-        $content = array($recipe,$new);
+        $content = array($recipe[0],$new,$recipe[1]);
         // die(var_dump($content));
         $this->view('details',$content); 
         }
@@ -161,14 +161,15 @@ session_start();
         public function Rate(){
         
             $id_user=$_SESSION['id'];
-            // die(var_dump($this->data));
-        //    $data['id_recipe'] = $this->data['id_recipe'];
-        //    $data['rating'] = $this->data['rating'];
-        $a= $this->recipesModel->Rate($this->data,$id_user);   
-               print_r(json_encode($a));
-        // $this->back();
-        // header("location:" . $_SERVER['HTTP_REFERER']);
-       
+            
+            $isRated=$this->recipesModel->isRated($this->data['id_recipe'],$id_user);
+            if($isRated){
+                $a=$this->recipesModel->UpdateRate($this->data,$id_user);
+            }else{
+               $a= $this->recipesModel->Rate($this->data,$id_user);   
+            //    
+            }
+            print_r(json_encode($a));
     }
         public function RemoveFavori($id_recipe,$id_user){
             $id_user=$_SESSION['id'];

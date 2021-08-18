@@ -19,11 +19,16 @@
             return $recipes;
         }
         public function getById($id) {
-            $this->db->query("SELECT * FROM recipes WHERE id=:id");
+            $this->db->query("SELECT * FROM recipes WHERE  id=:id");
+            
             //Bind values
            $this->db->bind(':id', $id);
             $recipe = $this->db->single();
-            return $recipe;
+            $this->db->query("SELECT ratting_number FROM recipes,ratting WHERE recipes.id=ratting.id_recipe AND recipes.id=:id");
+            $this->db->bind(':id', $id);
+            $rating = $this->db->single();
+            $array = array($recipe,$rating);
+            return $array;
         }
         public function getCategory($category) {
             $this->db->query("SELECT * FROM recipes WHERE type = :category");
@@ -105,10 +110,40 @@
            }
         }
 
+        public function isRated($id_recipe,$id_user)
+         {
+            $this->db->query("SELECT * FROM ratting WHERE id_recipe = :id_recipe AND id_user = :id_user");
+            $this->db->bind(':id_recipe', $id_recipe);
+            $this->db->bind(':id_user', $id_user);
+            $this->db->execute();
+            if($this->db->rowCount()>0){
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+
         public function Rate($data,$id_user) {
             $this->db->query('INSERT INTO `ratting`(`id_recipe`, `ratting_number`, `id_user`) VALUES (:id_recipe,:rating,:id_user)');
            
             //Bind values
+            $this->db->bind(':id_recipe', $data['id_recipe']);
+            $this->db->bind(':rating', $data['rating']);
+            $this->db->bind(':id_user', $id_user);
+ 
+            
+            //Execute function
+            try {
+                $this->db->execute();
+            } catch(PDOException $e) {
+                return $e->getMessage();
+            }
+         }
+        public function UpdateRate($data,$id_user) {
+            $this->db->query('UPDATE `ratting` SET `ratting_number`=:rating WHERE `id_user`=:id_user AND `id_recipe`=:id_recipe');
+           
+            
             $this->db->bind(':id_recipe', $data['id_recipe']);
             $this->db->bind(':rating', $data['rating']);
             $this->db->bind(':id_user', $id_user);
