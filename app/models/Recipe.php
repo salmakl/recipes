@@ -16,7 +16,13 @@
         public function getRecipes() {
             $this->db->query("SELECT r.id,r.name,r.description,status,r.img,t.name as type FROM recipes r,type t WHERE t.id=r.type");
             $recipes = $this->db->resultSet();
-            return $recipes;
+            $this->db->query("SELECT COUNT(*) as product FROM `recipes` ");
+            $count1 = $this->db->Single();
+            $this->db->query("SELECT COUNT(*) as visitor FROM `users` WHERE role='user'");
+            $count2 = $this->db->Single();
+            $array = array($recipes,$count1,$count2);
+            // die(var_dump($array));
+            return $array;
         }
         public function getById($id) {
             $this->db->query("SELECT * FROM recipes WHERE  id=:id");

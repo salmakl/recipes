@@ -25,7 +25,7 @@
                     <li ><a href="<?php echo URLROOT ?>/categories">Categories</a></li>  
                 </ul>
     
-                <?php if(!empty($_SESSION['id'])): ?>
+                <?php if(empty($_SESSION['id'])): ?>
                 <a href="<?php echo URLROOT ?>/users"><input id="sign" type="submit" name="signin" value="Sign in" class="Btn"></a>
                 <?php else: ?>
                  <div class="drop-trigger"><img class="icon" src="<?php echo IMAGE ?>Asset 1.svg" alt="">

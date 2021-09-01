@@ -8,7 +8,7 @@
 
         public function getUsers() 
         {
-           $this->db->query("SELECT * FROM users");
+           $this->db->query("SELECT * FROM users WHERE role = 'user'");
            $users = $this->db->resultSet();
            return $users;
         }

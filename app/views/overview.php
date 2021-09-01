@@ -102,23 +102,23 @@
 
                 <div class="card">
                     <div>
-                        <h4>Total Products</h4>
+                        <h4>Total Recipes</h4>
                         <p></p>
                     </div>
-
+                    
                     <div>
-                        <h3>11 </h3>
+                        <h3><?php echo $data[1]['product']?> </h3>
                         
                         
                     </div>
                 </div>
                 <div class="card">
                     <div>
-                        <h4>Total Visitors</h4>
+                        <h4>Total Users</h4>
                         <!-- <p>Lorem ipsum dolor sit amet.</p> -->
                     </div>
                     <div>
-                        <h3>8</h3>
+                        <h3><?php echo $data[2]['visitor']?></h3>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                       
                     </tr>
                     <?php
-                    foreach ($data as $row){
+                    foreach ($data[0] as $row){
                         
                         ?>
                    

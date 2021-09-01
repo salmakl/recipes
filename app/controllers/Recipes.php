@@ -143,9 +143,13 @@ session_start();
                                 
                            $a= $this->recipesModel->update($name,$description,$ingrediants,$type,$category,$img,$id);
                         // die(var_dump($a));
+                        if($_SESSION['role'] == 'admin'){
+                            $this->getDetails();
+                        }elseif($_SESSION['role'] == 'user'){
                             $this->getByUser();
+                            // header("location:" . $_SERVER['HTTP_REFERER']);
                         }
-    
+                    }
         public function Add2Favoris($id_recipe,$id_user){
             if(isset($_SESSION['id'])){
             $id_user=$_SESSION['id'];
